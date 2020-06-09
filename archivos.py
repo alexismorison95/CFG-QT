@@ -64,38 +64,48 @@ def buscar_cfg(lista, id):
 
     for i, cfg in enumerate(lista):
 
-        if cfg.id == id:
+        if cfg['id'] == id:
 
             return i
 
 
-def editar_cfg(lista, id, descripcion, cfg):
+def editar_cfg(lista, cfg):
 
-    i = buscar_cfg(lista, id)
+    try:
+        i = buscar_cfg(lista, cfg['id'])
 
-    lista['gramaticas'][i] = {
-        'id': id,
-        'descripcion': descripcion,
-        'cfg': cfg
-    }
+        lista[i] = {
+            'id': cfg['id'],
+            'descripcion': cfg['descripcion'],
+            'cfg': cfg['cfg']
+        }
 
-    data = {}
+        data = {}
 
-    data['gramaticas'] = lista
+        data['gramaticas'] = lista
 
-    with open('data.txt', 'w') as json_file:
-        json.dump(data, json_file)
+        with open('data.txt', 'w') as json_file:
+            json.dump(data, json_file)
+
+    except Exception as ex:
+
+        print(ex)
 
 
 def eliminar_cfg(lista, id):
 
-    i = buscar_cfg(lista, id)
+    try:
+        i = buscar_cfg(lista, id)
 
-    lista.pop(i)
+        lista.pop(i)
 
-    data = {}
+        data = {}
 
-    data['gramaticas'] = lista
+        data['gramaticas'] = lista
 
-    with open('data.txt', 'w') as json_file:
-        json.dump(data, json_file)
+        with open('data.txt', 'w') as json_file:
+            json.dump(data, json_file)
+
+    except Exception as ex:
+
+        print(ex)

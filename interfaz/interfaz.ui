@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>801</width>
+    <width>871</width>
     <height>452</height>
    </rect>
   </property>
@@ -63,7 +63,7 @@
      <rect>
       <x>20</x>
       <y>340</y>
-      <width>761</width>
+      <width>831</width>
       <height>31</height>
      </rect>
     </property>
@@ -104,7 +104,7 @@
      <rect>
       <x>330</x>
       <y>30</y>
-      <width>451</width>
+      <width>521</width>
       <height>201</height>
      </rect>
     </property>
@@ -124,14 +124,14 @@
    <widget class="QPushButton" name="btnGuardarCFG">
     <property name="geometry">
      <rect>
-      <x>700</x>
+      <x>670</x>
       <y>240</y>
       <width>81</width>
       <height>31</height>
      </rect>
     </property>
     <property name="toolTip">
-     <string>Guardar CFG</string>
+     <string>Guardar o editar CFG</string>
     </property>
     <property name="text">
      <string>Guardar</string>
@@ -145,7 +145,7 @@
      <rect>
       <x>20</x>
       <y>290</y>
-      <width>761</width>
+      <width>831</width>
       <height>20</height>
      </rect>
     </property>
@@ -234,7 +234,7 @@
    <widget class="QPushButton" name="btnEliminarCFG">
     <property name="geometry">
      <rect>
-      <x>600</x>
+      <x>570</x>
       <y>240</y>
       <width>81</width>
       <height>31</height>
@@ -250,7 +250,7 @@
    <widget class="QPushButton" name="btnGraficar">
     <property name="geometry">
      <rect>
-      <x>700</x>
+      <x>770</x>
       <y>380</y>
       <width>81</width>
       <height>31</height>
@@ -269,7 +269,7 @@
    <widget class="QPushButton" name="btnArchivos">
     <property name="geometry">
      <rect>
-      <x>600</x>
+      <x>670</x>
       <y>380</y>
       <width>81</width>
       <height>31</height>
@@ -304,6 +304,25 @@
      <bool>false</bool>
     </attribute>
    </widget>
+   <widget class="QPushButton" name="btnNuevoCFG">
+    <property name="geometry">
+     <rect>
+      <x>770</x>
+      <y>240</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Escribir nuevo CFG</string>
+    </property>
+    <property name="text">
+     <string>Nuevo</string>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
+   </widget>
    <zorder>lineEditCadenaVF</zorder>
    <zorder>lineEditCFGVF</zorder>
    <zorder>label</zorder>
@@ -317,13 +336,14 @@
    <zorder>textEditCFG</zorder>
    <zorder>lineEditCadena</zorder>
    <zorder>tableWidget</zorder>
+   <zorder>btnNuevoCFG</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>801</width>
+     <width>871</width>
      <height>21</height>
     </rect>
    </property>
