@@ -1,9 +1,9 @@
-from PyQt5 import QtWidgets, QtGui
+from PyQt5 import QtWidgets, QtGui, QtCore
 import sys
-import json
 
 from interfaz.interfaz import Ui_MainWindow
-from funciones import ejecutar_cfg, string_to_cfg, leer_json_cfg, guardar_json_cfg
+from archivos import leer_cfg, guardar_cfg, eliminar_cfg, editar_cfg, buscar_cfg
+from cfg import ejecutar_cfg, string_to_cfg
 
 
 class MainWindow(QtWidgets.QMainWindow):
@@ -16,7 +16,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.setupUi(self)
 
         # Tamaño de la pantalla
-        self.setFixedSize(720, 401)
+        self.setFixedSize(801, 452)
 
         # Placeholder multilinea
         placeholder = """S -> 'a' S | T
@@ -26,30 +26,36 @@ T -> 'b'"""
         # Atributos
         self.cfg = None
         self.cadena = None
+        self.lista_cfg = None
 
         # Eventos
         self.ui.textEditCFG.textChanged.connect(self.actualizar_cfg)
 
         self.ui.lineEditCadena.textChanged.connect(self.validar_cadena)
 
-        self.ui.btnGraficarArbol.clicked.connect(self.graficar_arbol)
+        # self.ui.btnGraficarArbol.clicked.connect(self.graficar_arbol)
 
         self.ui.btnGuardarCFG.clicked.connect(self.guardar_cfg)
 
-        self.ui.listViewCFG.clicked.connect(self.seleccionar_cfg)
+        # self.ui.listViewCFG.clicked.connect(self.seleccionar_cfg)
+        self.ui.tableWidget.clicked.connect(self.seleccionar_cfg)
 
         # Funciones a realizar cuando se abre el programa
         self.cargar_cfgs()
+
 
     def actualizar_cfg(self):
 
         try:
             self.cfg = string_to_cfg(self.ui.textEditCFG.toPlainText())
-            self.ui.labelInfoCFG.setText("Gramatica correcta")
+            self.ui.lineEditCFGVF.setText("La grámatica es válida")
+            self.ui.lineEditCFGVF.setStyleSheet('color: green; font: 10pt "MS Shell Dlg 2"')
 
         except Exception as ex:
             print(ex)
-            self.ui.labelInfoCFG.setText("Gramatica incorrecta")
+            self.ui.lineEditCFGVF.setText("La grámatica es inválida")
+            self.ui.lineEditCFGVF.setStyleSheet('color: red; font: 10pt "MS Shell Dlg 2"')
+
 
     def validar_cadena(self):
 
@@ -58,39 +64,68 @@ T -> 'b'"""
         resultado = ejecutar_cfg(self.cfg, self.cadena, graficar=False)
 
         if resultado:
-            self.ui.labelCadenaVF.setText("La gramatica genera la cadena")
+            self.ui.lineEditCadenaVF.setText("La grámatica genera la cadena")
+            self.ui.lineEditCadenaVF.setStyleSheet('color: green; font: 10pt "MS Shell Dlg 2"')
+
         else:
-            self.ui.labelCadenaVF.setText("La gramatica no genera la cadena")
+            self.ui.lineEditCadenaVF.setText("La grámatica no genera la cadena")
+            self.ui.lineEditCadenaVF.setStyleSheet('color: red; font: 10pt "MS Shell Dlg 2"')
+
 
     def graficar_arbol(self):
 
         ejecutar_cfg(self.cfg, self.cadena, graficar=True)
 
+
     def guardar_cfg(self):
 
-        cfg = self.ui.textEditCFG.toPlainText()
+        text, ok = QtWidgets.QInputDialog().getText(self, "Guardar", "Descripción del CFG",
+                                                    QtWidgets.QLineEdit.Normal)
 
-        guardar_json_cfg(cfg)
+        if ok:
+            cfg = self.ui.textEditCFG.toPlainText()
 
-        self.cargar_cfgs()
+            if text:
+                guardar_cfg(cfg, text)
+            else:
+                guardar_cfg(cfg, cfg)
+
+            self.cargar_cfgs()
+
 
     def seleccionar_cfg(self):
 
-        print(self.ui.listViewCFG.currentIndex().data())
+        index = self.ui.tableWidget.currentIndex().row()
 
-        self.ui.textEditCFG.setText(self.ui.listViewCFG.currentIndex().data())
+        cfg = self.lista_cfg[index]['cfg']
+
+        self.ui.textEditCFG.setText(cfg)
+
 
     def cargar_cfgs(self):
 
-        model = QtGui.QStandardItemModel()
-        self.ui.listViewCFG.setModel(model)
+        self.lista_cfg = leer_cfg()
 
-        lista = leer_json_cfg()
+        self.ui.tableWidget.setColumnCount(1)
+        self.ui.tableWidget.setRowCount(len(self.lista_cfg))
 
-        for cfg in lista:
+        self.ui.tableWidget.setColumnWidth(0, 280)
 
-            item = QtGui.QStandardItem(cfg)
-            model.appendRow(item)
+        self.ui.tableWidget.setHorizontalHeaderLabels(['Descripción'])
+
+        self.ui.tableWidget.resizeRowsToContents()
+
+        row = 0
+
+        for cfg in self.lista_cfg:
+
+            descripcion = QtWidgets.QTableWidgetItem(cfg['descripcion'])
+
+            descripcion.setFlags(QtCore.Qt.ItemIsSelectable | QtCore.Qt.ItemIsEnabled)
+
+            self.ui.tableWidget.setItem(row, 0, descripcion)
+
+            row += 1
 
 
 if __name__ == '__main__':

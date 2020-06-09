@@ -2,12 +2,15 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>720</width>
-    <height>546</height>
+    <width>801</width>
+    <height>452</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,32 +20,6 @@
    <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QListView" name="listViewCFG">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>30</y>
-      <width>191</width>
-      <height>351</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true"/>
-    </property>
-   </widget>
-   <widget class="Line" name="line">
-    <property name="geometry">
-     <rect>
-      <x>220</x>
-      <y>10</y>
-      <width>20</width>
-      <height>371</height>
-     </rect>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Vertical</enum>
-    </property>
-   </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
@@ -65,7 +42,7 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>250</x>
+      <x>330</x>
       <y>10</y>
       <width>241</width>
       <height>16</height>
@@ -84,22 +61,31 @@
    <widget class="QLineEdit" name="lineEditCadena">
     <property name="geometry">
      <rect>
-      <x>250</x>
-      <y>320</y>
-      <width>451</width>
-      <height>21</height>
+      <x>20</x>
+      <y>340</y>
+      <width>761</width>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="frame">
+     <bool>true</bool>
     </property>
     <property name="placeholderText">
      <string>aab</string>
+    </property>
+    <property name="clearButtonEnabled">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>250</x>
-      <y>300</y>
-      <width>241</width>
+      <x>20</x>
+      <y>320</y>
+      <width>131</width>
       <height>16</height>
      </rect>
     </property>
@@ -113,27 +99,23 @@
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QPushButton" name="btnGraficarArbol">
-    <property name="geometry">
-     <rect>
-      <x>600</x>
-      <y>350</y>
-      <width>101</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Graficar Arboles</string>
-    </property>
-   </widget>
    <widget class="QTextEdit" name="textEditCFG">
     <property name="geometry">
      <rect>
-      <x>250</x>
+      <x>330</x>
       <y>30</y>
       <width>451</width>
       <height>201</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
     </property>
     <property name="placeholderText">
      <string>S -&gt; 'a' S | 'b'</string>
@@ -142,82 +124,86 @@
    <widget class="QPushButton" name="btnGuardarCFG">
     <property name="geometry">
      <rect>
-      <x>600</x>
+      <x>700</x>
       <y>240</y>
-      <width>101</width>
+      <width>81</width>
       <height>31</height>
      </rect>
     </property>
-    <property name="text">
+    <property name="toolTip">
      <string>Guardar CFG</string>
     </property>
-   </widget>
-   <widget class="QLabel" name="labelInfoCFG">
-    <property name="geometry">
-     <rect>
-      <x>250</x>
-      <y>430</y>
-      <width>341</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="layoutDirection">
-     <enum>Qt::LeftToRight</enum>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot;;</string>
-    </property>
     <property name="text">
-     <string/>
+     <string>Guardar</string>
     </property>
-    <property name="alignment">
-     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="labelCadenaVF">
-    <property name="geometry">
-     <rect>
-      <x>130</x>
-      <y>460</y>
-      <width>341</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="layoutDirection">
-     <enum>Qt::LeftToRight</enum>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot;;</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    <property name="flat">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="Line" name="line_2">
     <property name="geometry">
      <rect>
-      <x>250</x>
-      <y>280</y>
-      <width>451</width>
-      <height>16</height>
+      <x>20</x>
+      <y>290</y>
+      <width>761</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEditCadena_2">
+   <widget class="QLineEdit" name="lineEditCFGVF">
     <property name="enabled">
      <bool>false</bool>
     </property>
     <property name="geometry">
      <rect>
-      <x>250</x>
+      <x>330</x>
       <y>240</y>
-      <width>341</width>
+      <width>221</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="mouseTracking">
+     <bool>false</bool>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+    <property name="placeholderText">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEditCadenaVF">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>380</y>
+      <width>221</width>
       <height>31</height>
      </rect>
     </property>
@@ -230,10 +216,13 @@
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(255, 0, 0);</string>
+     <string notr="true">color: rgb(0, 170, 0);</string>
     </property>
     <property name="text">
-     <string>asdasd</string>
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
     <property name="readOnly">
      <bool>true</bool>
@@ -242,48 +231,131 @@
      <string/>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEditCadena_3">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
+   <widget class="QPushButton" name="btnEliminarCFG">
     <property name="geometry">
      <rect>
-      <x>250</x>
-      <y>350</y>
-      <width>341</width>
+      <x>600</x>
+      <y>240</y>
+      <width>81</width>
       <height>31</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="mouseTracking">
-     <bool>false</bool>
+    <property name="toolTip">
+     <string>Eliminar CFG</string>
     </property>
     <property name="text">
-     <string/>
-    </property>
-    <property name="readOnly">
-     <bool>true</bool>
-    </property>
-    <property name="placeholderText">
-     <string/>
+     <string>Eliminar</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="btnGraficar">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>380</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Graficar arboles</string>
+    </property>
+    <property name="whatsThis">
+     <string/>
+    </property>
+    <property name="text">
+     <string>Graficar</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnArchivos">
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>380</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Ver arboles generados</string>
+    </property>
+    <property name="whatsThis">
+     <string/>
+    </property>
+    <property name="text">
+     <string>Mis archivos</string>
+    </property>
+   </widget>
+   <widget class="QTableWidget" name="tableWidget">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>30</y>
+      <width>291</width>
+      <height>241</height>
+     </rect>
+    </property>
+    <property name="selectionBehavior">
+     <enum>QAbstractItemView::SelectRows</enum>
+    </property>
+    <attribute name="horizontalHeaderHighlightSections">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="verticalHeaderHighlightSections">
+     <bool>false</bool>
+    </attribute>
+   </widget>
+   <zorder>lineEditCadenaVF</zorder>
+   <zorder>lineEditCFGVF</zorder>
+   <zorder>label</zorder>
+   <zorder>label_2</zorder>
+   <zorder>label_3</zorder>
+   <zorder>btnGuardarCFG</zorder>
+   <zorder>line_2</zorder>
+   <zorder>btnEliminarCFG</zorder>
+   <zorder>btnGraficar</zorder>
+   <zorder>btnArchivos</zorder>
+   <zorder>textEditCFG</zorder>
+   <zorder>lineEditCadena</zorder>
+   <zorder>tableWidget</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>720</width>
+     <width>801</width>
      <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuAyuda">
+    <property name="title">
+     <string>Ayuda</string>
+    </property>
+    <addaction name="actionComo_usar"/>
+    <addaction name="separator"/>
+    <addaction name="actionAcerca_de"/>
+   </widget>
+   <addaction name="menuAyuda"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionComo_usar">
+   <property name="icon">
+    <iconset>
+     <normaloff>C:/Users/alexi/Dropbox/Mi Carpeta/Iconos/question1.png</normaloff>C:/Users/alexi/Dropbox/Mi Carpeta/Iconos/question1.png</iconset>
+   </property>
+   <property name="text">
+    <string>Cómo usar</string>
+   </property>
+  </action>
+  <action name="actionAcerca_de">
+   <property name="icon">
+    <iconset>
+     <normaloff>C:/Users/alexi/Dropbox/Mi Carpeta/Iconos/info1.png</normaloff>C:/Users/alexi/Dropbox/Mi Carpeta/Iconos/info1.png</iconset>
+   </property>
+   <property name="text">
+    <string>Acerca de</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
