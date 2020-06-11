@@ -3,8 +3,11 @@ import sys
 import os
 
 from interfaz.interfaz import Ui_MainWindow
+
 from archivos import leer_cfg, guardar_cfg, eliminar_cfg, editar_cfg, buscar_cfg
 from cfg import ejecutar_cfg, string_to_cfg
+
+from ayuda import Ayuda
 
 
 class MainWindow(QtWidgets.QMainWindow):
@@ -48,8 +51,19 @@ T -> 'b'"""
 
         self.ui.btnArchivos.clicked.connect(self.abrir_archivos)
 
+        self.ui.actionComo_usar.triggered.connect(self.abrir_ayuda)
+
         # Funciones a realizar cuando se abre el programa
         self.cargar_cfgs()
+
+        self.ui.textEditCFG.setFocus()
+
+
+    def abrir_ayuda(self):
+
+        ayuda = Ayuda()
+        ayuda.setModal(False)
+        ayuda.exec()
 
 
     def abrir_archivos(self):
