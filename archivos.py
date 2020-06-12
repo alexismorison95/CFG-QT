@@ -2,7 +2,7 @@ import json
 import uuid
 
 
-def guardar_cfg(cfg, descripcion):
+def guardar(cfg, descripcion):
 
     try:
         with open('data.txt') as json_file:
@@ -37,7 +37,7 @@ def guardar_cfg(cfg, descripcion):
             json.dump(data, json_file)
 
 
-def leer_cfg():
+def leer():
 
     try:
 
@@ -60,7 +60,7 @@ def leer_cfg():
         return []
 
 
-def buscar_cfg(lista, id):
+def buscar(lista, id):
 
     for i, cfg in enumerate(lista):
 
@@ -69,12 +69,10 @@ def buscar_cfg(lista, id):
             return i
 
 
-def editar_cfg(lista, cfg):
+def editar(lista, cfg, index):
 
     try:
-        i = buscar_cfg(lista, cfg['id'])
-
-        lista[i] = {
+        lista[index] = {
             'id': cfg['id'],
             'descripcion': cfg['descripcion'],
             'cfg': cfg['cfg']
@@ -92,12 +90,10 @@ def editar_cfg(lista, cfg):
         print(ex)
 
 
-def eliminar_cfg(lista, id):
+def eliminar(lista, index):
 
     try:
-        i = buscar_cfg(lista, id)
-
-        lista.pop(i)
+        lista.pop(index)
 
         data = {}
 

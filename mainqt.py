@@ -1,10 +1,10 @@
-from PyQt5 import QtWidgets, QtGui, QtCore
+from PyQt5 import QtWidgets, QtCore
 import sys
 import os
 
 from interfaz.interfaz import Ui_MainWindow
 
-from archivos import leer_cfg, guardar_cfg, eliminar_cfg, editar_cfg, buscar_cfg
+from archivos import leer, guardar, editar, eliminar
 from cfg import ejecutar_cfg, string_to_cfg
 
 from ayuda import Ayuda
@@ -22,17 +22,17 @@ class MainWindow(QtWidgets.QMainWindow):
         # Tamaño de la pantalla
         self.setFixedSize(871, 452)
 
-        # Placeholder multilinea
-        placeholder = """S -> 'a' S | T
-T -> 'b'"""
-        self.ui.textEditCFG.setPlaceholderText(placeholder)
-
         # Atributos
         self.cfg = None
         self.cadena = None
         self.lista_cfg = None
         self.cfg_seleccionado = None
         self.editar_cfg = False
+
+        # Placeholder multilinea
+        placeholder = """S -> 'a' S | T
+T -> 'b'"""
+        self.ui.textEditCFG.setPlaceholderText(placeholder)
 
         # Eventos
         self.ui.textEditCFG.textChanged.connect(self.actualizar_cfg)
@@ -86,7 +86,9 @@ T -> 'b'"""
 
         if self.editar_cfg:
 
-            eliminar_cfg(self.lista_cfg, self.cfg_seleccionado['id'])
+            index = self.ui.tableWidget.currentIndex().row()
+
+            eliminar(self.lista_cfg, index)
 
             self.ui.textEditCFG.setText("")
             self.ui.lineEditCFGVF.setText("")
@@ -142,19 +144,21 @@ T -> 'b'"""
 
             if self.editar_cfg:
 
+                index = self.ui.tableWidget.currentIndex().row()
+
                 obj = self.cfg_seleccionado
                 obj['cfg'] = self.ui.textEditCFG.toPlainText()
                 obj['descripcion'] = text
 
-                editar_cfg(self.lista_cfg, obj)
+                editar(self.lista_cfg, obj, index)
 
             else:
                 cfg = self.ui.textEditCFG.toPlainText()
 
                 if text:
-                    guardar_cfg(cfg, text)
+                    guardar(cfg, text)
                 else:
-                    guardar_cfg(cfg, cfg)
+                    guardar(cfg, cfg)
 
             self.cargar_cfgs()
 
@@ -174,7 +178,7 @@ T -> 'b'"""
 
     def cargar_cfgs(self):
 
-        self.lista_cfg = leer_cfg()
+        self.lista_cfg = leer()
 
         self.ui.tableWidget.setColumnCount(1)
         self.ui.tableWidget.setRowCount(len(self.lista_cfg))
