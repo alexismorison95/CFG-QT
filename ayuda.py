@@ -1,4 +1,4 @@
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtGui
 
 from interfaz.ayuda import Ui_Dialog
 
@@ -12,3 +12,4 @@ class Ayuda(QtWidgets.QDialog):
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
 
+        self.setWindowIcon(QtGui.QIcon(QtGui.QPixmap('./interfaz/question1.png')))

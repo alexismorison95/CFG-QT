@@ -16,6 +16,10 @@
   <property name="windowTitle">
    <string>CFG</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>chime_in.png</normaloff>chime_in.png</iconset>
+  </property>
   <property name="styleSheet">
    <string notr="true"/>
   </property>

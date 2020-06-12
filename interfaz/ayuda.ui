@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Ayuda</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>question1.png</normaloff>question1.png</iconset>
+  </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>

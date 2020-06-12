@@ -1,13 +1,12 @@
-from PyQt5 import QtWidgets, QtCore
+from PyQt5 import QtWidgets, QtCore, QtGui
 import sys
 import os
 
 from interfaz.interfaz import Ui_MainWindow
+from ayuda import Ayuda
 
 from archivos import leer, guardar, editar, eliminar
 from cfg import ejecutar_cfg, string_to_cfg
-
-from ayuda import Ayuda
 
 
 class MainWindow(QtWidgets.QMainWindow):
@@ -18,6 +17,11 @@ class MainWindow(QtWidgets.QMainWindow):
         # Interfaz grafica
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+
+        # Iconos
+        self.setWindowIcon(QtGui.QIcon(QtGui.QPixmap('./interfaz/chime_in.png')))
+        self.ui.actionComo_usar.setIcon(QtGui.QIcon('./interfaz/question1.png'))
+        self.ui.actionAcerca_de.setIcon(QtGui.QIcon('./interfaz/info1.png'))
 
         # Tamaño de la pantalla
         self.setFixedSize(871, 452)
@@ -138,7 +142,12 @@ T -> 'b'"""
 
     def guardar_cfg(self):
 
-        text, ok = QtWidgets.QInputDialog().getText(self, "Guardar", "Descripción del CFG", QtWidgets.QLineEdit.Normal)
+        text, ok = QtWidgets.QInputDialog().getText(
+            self,
+            "Guardar",
+            "Descripción del CFG",
+            QtWidgets.QLineEdit.Normal
+        )
 
         if ok:
 
